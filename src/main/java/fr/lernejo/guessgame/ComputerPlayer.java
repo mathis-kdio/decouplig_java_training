@@ -6,8 +6,8 @@ import fr.lernejo.logger.LoggerFactory;
 public class ComputerPlayer implements Player {
     Logger logger = LoggerFactory.getLogger("Computer");
     private long borneInf = 0;
-    public long borneSup = 100;
-    private long borneTmp = 50;
+    public long borneSup = Long.MAX_VALUE;
+    private long borneTmp = Long.MAX_VALUE / 2;
 
     public long askNextGuess() {
         borneTmp = (borneSup + borneInf) / 2;

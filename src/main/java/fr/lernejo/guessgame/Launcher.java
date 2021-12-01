@@ -14,8 +14,8 @@ public class Launcher {
         }
         else if (args[0].equals("-auto")){
             Simulation simulation = new Simulation(new ComputerPlayer());
-            simulation.initialize(randomNumber);
-            simulation.loopUntilPlayerSucceed(Integer.parseInt(args[1]));
+            simulation.initialize(Integer.parseInt(args[1]));
+            simulation.loopUntilPlayerSucceed(1000);
         }
         else {
             System.out.println("Il manque un argument\n -interactive si vous voulez jouer\n -auto pour laisser le robot");
