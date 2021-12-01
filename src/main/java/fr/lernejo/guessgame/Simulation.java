@@ -3,6 +3,9 @@ package fr.lernejo.guessgame;
 import fr.lernejo.logger.Logger;
 import fr.lernejo.logger.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Simulation {
 
     private final Logger logger = LoggerFactory.getLogger("simulation");
@@ -32,10 +35,18 @@ public class Simulation {
         }
     }
 
-    public void loopUntilPlayerSucceed() {
+    public void loopUntilPlayerSucceed(long maxIter) {
         boolean res;
-        do {
+        long timeStart = System.currentTimeMillis();
+        logger.log("Début de la partie");
+        for (int i = 0; i < maxIter; i++) {
             res = nextRound();
-        } while (!res);
+            if (res == true)
+                break;
+        }
+        long timeEnd = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("mm:ss.SSS");
+        String formatted = sdf.format(new Date(timeEnd - timeStart));
+        logger.log(formatted);
     }
 }
